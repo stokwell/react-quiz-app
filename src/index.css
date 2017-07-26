@@ -1,0 +1,34 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: #eee;
+  font-family: sans-serif;
+}
+
+ul {
+  list-style: none;
+  padding:0;
+  margin:0;
+}
+
+header {
+  background: #fff;
+  min-height: 50px;
+}
+
+p, h1, h2, h3, h4 {
+  margin:0;
+  padding:0;
+}
+
+a {
+  color: white;
+  background: none;
+  text-decoration: none;
+}
+
+input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+}

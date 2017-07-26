@@ -1,0 +1,113 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.none {
+  display: none;
+}
+
+.right {
+  color:green;
+
+}
+
+.wrong {
+  color: red;
+}
+
+.container {
+  display:flex;
+}
+
+.wrapper {
+  width:700px;
+  background: #fff;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .2);
+}
+
+/* Styles for TestForm */
+
+.undertitle {
+  margin-bottom: 29px;
+  text-align: center;
+}
+
+.test-form-page {
+  padding: 50px;
+}
+
+.box {
+  width:1000px;
+  background: #fff;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .2);
+  display: inline-block;
+  margin: 30px;
+  padding:30px;
+  vertical-align: top;
+}
+
+.test-form-box {
+  width:500px;
+  background: #fff;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .2);
+}
+
+.test-form-wrapper {
+  box-sizing:border-box;
+}
+
+.test-form-wrapper input {
+  width:100%;
+  box-sizing:border-box;
+  padding:10px;
+}
+
+.form-group {
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Styles fror Qiuz */
+
+input[type="radio"] {
+  width:auto;
+  margin-right: 10px;
+}
+
+.answerOptions {
+  padding:30px 30px;
+}
+
+.answerOption {
+  padding:20px;
+}
+
+.question {
+  text-align:center;
+  margin-top: 20px;
+}
