@@ -1,4 +1,4 @@
-import { FETCH_TESTS, ADD_TEST, TEST_FETCHED } from '../actions/constants';
+import { FETCH_TESTS, ADD_TEST, TEST_FETCHED, DELETE_TEST, ADD_QUESTION, DELETE_QUESTION } from '../actions/constants';
 
 const initialState = {
   tests: [],
@@ -21,5 +21,15 @@ export default function eventsReducer (state = initialState, action) {
 
     case TEST_FETCHED:
       return { ...state, currentTest: action.payload, isLoaded: true }
+
+    case DELETE_TEST:
+      return { ...state, tests: state.tests.filter((test)=> test.id !== action.payload.id)}
+
+    case ADD_QUESTION:
+      return { ...state, currentTest: { ...state.currentTest,  questions: state.currentTest.questions.concat(action.payload)}  }
+
+    case DELETE_QUESTION:
+      return { ...state, currentTest: { ...state.currentTest,  questions: state.currentTest.questions.filter((question) => question.id !== action.payload.id)}  }
+
   }
 }

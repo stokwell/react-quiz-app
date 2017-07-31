@@ -44,14 +44,35 @@
   transition: all 100ms ease-in-out;
 }
 
-
 .list-item:nth-child(odd) {
   background: #ededee;
 }
+
 .list-item:nth-child(even) {
   background: #F5F5F6;
 }
 
-.list-item:hover {
+/*.list-item:hover {
   background: #dcdcde;
+}*/
+
+.buttons-panel > *{
+  margin: 0 10px;
+}
+
+.buttons-panel a {
+  color:white;
+}
+
+.relative {
+  position:relative;
+}
+
+.btn-close {
+  padding:10px 15px;
+  background: none;
+  border:none;
+  position:absolute;
+  top:0;
+  right:0;
 }

@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import { Field, reduxForm } from 'redux-form'
-import { addTest } from '../../actions/testActions';
 import { withRouter } from 'react-router-dom'
 
 class TestForm extends Component {
   render() {
     return (
       <div className="test-form-wrapper">
-        <h2 className="undertitle">1.Create a Quiz</h2>
+        <h2 className="undertitle">Create a Quiz</h2>
         <form onSubmit={ this.props.handleSubmit }>
           <div className="form-group">
             <label htmlFor="title">Title</label>

@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { FETCH_TESTS, ADD_TEST, TEST_FETCHED } from './constants';
+import { FETCH_TESTS, ADD_TEST, TEST_FETCHED, DELETE_TEST } from './constants';
 
 const URL = 'http://localhost:3000/api/tests';
 
@@ -13,7 +13,7 @@ export function addTest(data) {
 }
 
 export function fetchTest(id) {
-  const request = axios.get(`http://localhost:3000/api/tests/${id}`)
+  const request = axios.get(`${URL}/${id}`)
   return (dispatch) => {
     request.then((response) =>  {
       dispatch({type: TEST_FETCHED, payload: response.data})
@@ -30,6 +30,11 @@ export function fetchTests() {
   };
 }
 
-export function newTest(){
-  const request = axios.get(`${URL}/new`)
+export function deleteTest(id) {
+  const request = axios.delete(`${URL}/${id}`)
+  return (dispatch) => {
+    request.then((response) =>  {
+      dispatch({type: DELETE_TEST, payload: response.data})
+    });
+  };
 }

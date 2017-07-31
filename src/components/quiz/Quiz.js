@@ -1,10 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Question from './Question';
 import QuestionCount from './QuestionCount';
 import AnswerOptions from './AnswerOptions';
 import NextQuestionButton from './NextQuestionButton';
 import ResultsButton from './ResultsButton'
+
+
+
 
 const Quiz = (props) => {
   function renderAnswerOptions(key) {
@@ -44,12 +48,13 @@ const Quiz = (props) => {
 }
 
 Quiz.propTypes = {
-  answer: React.PropTypes.string.isRequired,
-  answerOptions: React.PropTypes.array.isRequired,
-  question: React.PropTypes.string.isRequired,
-  questionId: React.PropTypes.number.isRequired,
-  questionTotal: React.PropTypes.number.isRequired,
-  onAnswerSelected: React.PropTypes.func.isRequired
+  answer: PropTypes.string.isRequired,
+  answerOptions: PropTypes.array.isRequired,
+  question: PropTypes.string.isRequired,
+  questionId: PropTypes.number.isRequired,
+  questionTotal: PropTypes.number.isRequired,
+  onAnswerSelected: PropTypes.func.isRequired
 };
+
 
 export default Quiz;

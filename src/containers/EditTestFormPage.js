@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom'
 
 
 import QuestionsList from '../components/testForm/QuestionsList';
 import QuestionForm from '../components/testForm/QuestionForm';
 import TestInfo from '../components/testForm/TestInfo';
 
-
 import { fetchTest} from '../actions/testActions';
+import { addQuestion, deleteQuestion } from '../actions/questionActrions';
 
 
 class EditTestFormPage extends Component {
@@ -19,6 +18,17 @@ class EditTestFormPage extends Component {
     }
   }
 
+  submit = (values) => {
+    const test_id = this.props.match.params.id
+    const question = { ...values, test_id: test_id}
+    console.log(question)
+    this.props.addQuestion(question, test_id)
+  }
+
+  deleteQuestion = () => {
+    this.props.deleteQuestion()
+  }
+
   render() {
     const test  = this.props.test
     const test_id = this.props.match.params.id
@@ -26,13 +36,12 @@ class EditTestFormPage extends Component {
     return (
       <div className="container center">
         <TestInfo test={test}/>
-        <QuestionsList test={test} />
-        <QuestionForm test_id={test_id}/>
+        <QuestionsList test={test} deleteQuestion={this.deleteQuestion}/>
+        <QuestionForm test_id={test_id} onSubmit={this.submit}/>
       </div>
     );
   }
 }
-
 
 
 function mapStateToProps(state){
@@ -42,4 +51,4 @@ function mapStateToProps(state){
 }
 
 
-export default connect(mapStateToProps, { fetchTest })(EditTestFormPage);
+export default connect(mapStateToProps, { fetchTest, addQuestion, deleteQuestion })(EditTestFormPage);

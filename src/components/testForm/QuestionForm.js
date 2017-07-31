@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import { Field, FieldArray, reduxForm } from 'redux-form';
-import { addQuestion} from '../../actions/questionActrions';
+import { connect } from 'react-redux';
 
 
-const renderField = ({ input, label, type, meta: { touched, error } }) =>
-  <div>
+
+
+const renderField = ({ input, label, placeholder, type, meta: { touched, error } }) =>
+  <div className="margin-bottom">
     <label>
       {label}
     </label>
     <div>
-      <input {...input} type={type} placeholder={label} />
+      <input {...input} type={type} placeholder={placeholder} />
       {touched &&
         error &&
         <span>
@@ -22,39 +24,43 @@ const renderField = ({ input, label, type, meta: { touched, error } }) =>
 const renderAnswers = ({fields }) =>
   <ul>
     {fields.map((answer, index) =>
-    <li key={index}>
+    <li key={index} className="list-item relative">
       <button
+        className="btn-close"
         type="button"
         title="Remove Answer"
         onClick={() => fields.remove(index)}
-      />
-      <h4>
-        Answer #{index + 1}
-      </h4>
+      >&times;</button>
+      <h4 className="margin-bottom">{index + 1 } Answer</h4>
+
       <Field
         name={`${answer}.body`}
         type="text"
         component={renderField}
-        label="Answer"
+        label="Write an answer option in this field."
+        placeholder="Answer"
       />
       <Field
         name={`${answer}.comment`}
         type="text"
         component={renderField}
-        label="Comment"
+        label="Add a comment for this answer. The user will see it, when he have answered a question."
+        placeholder="Comment"
       />
       <Field
         name={`${answer}.right`}
         type="checkbox"
         component={renderField}
-        label="Right?"
+        label="Is this answer right? Check it, if it is a right answer."
       />
     </li>
     )}
     <li>
-      <button type="button" onClick={() => fields.push()}>
-        Add Answer
-      </button>
+      <div className="new-answer-panel">
+        <button type="button" onClick={() => fields.push()} className="btn btn-warning">
+          Add answer
+        </button>
+      </div>
     </li>
   </ul>
 
@@ -62,30 +68,27 @@ const renderAnswers = ({fields }) =>
 
 
 class QuestionForm extends Component {
-  submit = (values) => {
-    const test_id = this.props.test_id
-    const question = { ...values, test_id: test_id}
-    console.log(question)
-    addQuestion(question, test_id)
-
-  }
 
   render() {
-
     return (
       <div className="box">
-        <h2 className="undertitle">Add new Question</h2>
-        <form onSubmit={ this.props.handleSubmit(this.submit) }>
+        <h3 className="undertitle">Add new Question</h3>
+        <form onSubmit={ this.props.handleSubmit }>
           <div className="form-group">
-            <h4>Question</h4>
-            <label htmlFor="body">Question</label>
-            <Field name="body" component="input" type="text"/>
+            <h4 className="margin-bottom">1. Create your Question first</h4>
+            <div className="list-item">
+              <label htmlFor="body">Write your Question here.</label>
+              <Field name="body" component="input" type="text" placeholder="Question"/>
+            </div>
           </div>
           <div className="form-group">
+            <h4 className="margin-bottom">2. Add some Answer Options for this Question</h4>
             <FieldArray name="answers" component={renderAnswers} />
           </div>
-
-          <button type="submit" className="btn btn-primary">Submit</button>
+          <div className="form-group float-right">
+            <p>Ready?</p>
+            <button type="submit" className="btn btn-primary">Continue</button>
+          </div>
         </form>
       </div>
     );
@@ -97,4 +100,4 @@ QuestionForm = reduxForm({
 })(QuestionForm)
 
 
-export default QuestionForm;
+export default connect()(QuestionForm);

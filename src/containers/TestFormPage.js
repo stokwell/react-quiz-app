@@ -1,17 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import TestForm from '../components/testForm/TestForm';
-import AddQuestionsPanel from '../components/testForm/AddQuestionsPanel';
 
-import { addTest, newTest } from '../actions/testActions';
+import TestForm from '../components/testForm/TestForm';
+import { addTest } from '../actions/testActions';
+
+import '../css/edit-test.css'
 
 class TestFormPage extends Component {
 
-    state = {
+  constructor(props) {
+    super(props);
+
+    this.state = {
       id: this.props.test ? this.props.test.id : null,
       title: this.props.test ? this.props.test.title : '',
       done: false
     }
+  }
 
 
   submit = (values) => {
@@ -24,9 +29,10 @@ class TestFormPage extends Component {
   }
 
   render() {
+    console.log(this.props)
     return (
-      <div className="test-form-page">
-        <div className="box test-form-box">
+      <div className="test-form-page center">
+        <div className="box">
           <TestForm onSubmit={this.submit}/>
         </div>
       </div>
@@ -37,7 +43,6 @@ class TestFormPage extends Component {
 function mapStateToProps(state){
   return {
     test: state.tests.currentTest,
-    tests: state.tests
   }
 }
 

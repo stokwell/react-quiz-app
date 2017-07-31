@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 import { fetchTest} from '../actions/testActions';
 
 import Test from '../components/quiz/Test';

@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import Question from './Question';
-
 
 import Quiz from './Quiz';
 import Result from './Result';
@@ -22,17 +20,22 @@ class Test extends Component {
       questions:[],
       end: false
     };
-
-
   }
 
   componentDidMount() {
     const questions = this.props.quiz.questions
-    const shuffledAnswerOptions = questions.map((question) => this.shuffleArray(question.answers));
-    this.setState({
-      questions: questions,
-      answerOptions: shuffledAnswerOptions[0]
-    })
+    if(questions.as) {
+      const shuffledAnswerOptions = questions.map((question) => this.shuffleArray(question.answers));
+      this.setState({
+        questions: questions,
+        answerOptions: shuffledAnswerOptions[0] || null
+      })
+    } else {
+      this.setState({
+        questions: [],
+        answerOptions: []
+      })
+    }
   }
 
 
@@ -113,7 +116,7 @@ class Test extends Component {
 
 
   setUserAnswer(answer){
-    const findAnswer = this.state.answerOptions.find((item) => item.body == answer.id)
+    const findAnswer = this.state.answerOptions.find((item) => item.body === answer.id)
 
     const right = findAnswer.right
     const answerId = answer.id
@@ -151,15 +154,11 @@ class Test extends Component {
     );
   }
 
-
-
   renderResult() {
     return (
       <Result correctAnswers={this.state.answersCount} questionTotal={this.state.questions.length}/>
     );
   }
-
-
 
   render() {
     console.log(this.state)
