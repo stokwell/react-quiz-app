@@ -24,7 +24,7 @@ class Test extends Component {
 
   componentDidMount() {
     const questions = this.props.quiz.questions
-    if(questions.as) {
+    if(questions) {
       const shuffledAnswerOptions = questions.map((question) => this.shuffleArray(question.answers));
       this.setState({
         questions: questions,
