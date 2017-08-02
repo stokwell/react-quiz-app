@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { FETCH_TESTS, ADD_TEST, TEST_FETCHED, DELETE_TEST } from './constants';
 
-const URL = 'http://localhost:3000/api/tests';
+const URL = 'https://sleepy-forest-71707.herokuapp.com/api/tests';
 
 export function addTest(data) {
   const request = axios.post(URL, { test: data  } )
