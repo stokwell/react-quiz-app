@@ -28,6 +28,7 @@ class TestsList extends Component {
           <Link to={`/test/${test.id}`} className="btn btn-info">Open</Link>
           <Link to={`/test/${test.id}/edit`} className="btn btn-warning">Edit</Link>
           <button onClick={this.deleteTest} id={test.id} className="btn btn-danger">Delete</button>
+
         </div>
       </li>
     )

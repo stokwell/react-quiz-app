@@ -1,13 +1,27 @@
-import React, { Component } from 'react'
-import { Field, reduxForm } from 'redux-form'
-import { withRouter } from 'react-router-dom'
+import React, { Component } from 'react';
+import { Field, reduxForm } from 'redux-form';
+import { connect } from  'react-redux';
+import { withRouter } from 'react-router-dom';
+
+import { fetchTest, updateTest, addTest } from '../../actions/testActions';
 
 class TestForm extends Component {
+
+  submit = (values) => {
+    if(this.props.initialValues){
+      const id = this.props.initialValues.id
+      this.props.updateTest(id, values)
+      this.props.closeEditForm()
+    } else {
+      this.props.addTest(values)
+    }
+  }
+
   render() {
+    console.log(this.props.initialValues)
     return (
       <div className="test-form-wrapper">
-        <h2 className="undertitle">Create a Quiz</h2>
-        <form onSubmit={ this.props.handleSubmit }>
+        <form onSubmit={ this.props.handleSubmit(this.submit) }>
           <div className="form-group">
             <label htmlFor="title">Title</label>
             <Field name="title" component="input" type="text" />
@@ -33,4 +47,14 @@ TestForm = reduxForm({
   form: 'test'
 })(TestForm)
 
-export default withRouter(TestForm);
+
+const mapStateToProps = (state, props) =>{
+  if(props.test){
+    return {
+      initialValues: state.tests.currentTest
+    }
+  }return null
+
+}
+
+export default connect(mapStateToProps, { fetchTest, updateTest, addTest } )(TestForm);

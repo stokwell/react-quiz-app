@@ -9,7 +9,12 @@ import TestFormPage from './containers/TestFormPage';
 import EditTestFormPage from './containers/EditTestFormPage';
 import TestPage from './containers/TestPage';
 import Dashboard from './components/dashboard/Dashboard.js'
+import Home from './containers/Home';
 
+import LoginPage from './components/login/LoginPage';
+import SignupPage from './components/signup/SignupPage';
+
+import requireAuth from './utils/requireAuth';
 
 
 class App extends Component {
@@ -17,11 +22,13 @@ class App extends Component {
     return (
       <div className="page">
         <Navigation />
-        <Route exact path="/" component={TestsList} />
+        <Route exact path="/" component={Home} />
         <Route exact path="/new-test" component={TestFormPage} />
         <Route exact path="/test/:id/edit" component={EditTestFormPage} />
         <Route exact path="/test/:id" component={TestPage}/>
-        <Route exact path="/dashboard" component={Dashboard}/>
+        <Route path="/login" component={LoginPage}></Route>
+        <Route path="/signup" component={SignupPage} />
+        <Route path="/dashboard" component={requireAuth(Dashboard)} />
       </div>
     );
   }

@@ -1,7 +1,8 @@
 import axios from 'axios'
-import { FETCH_TESTS, ADD_TEST, TEST_FETCHED, DELETE_TEST } from './constants';
+import { FETCH_TESTS, ADD_TEST, TEST_FETCHED, DELETE_TEST, UPDATE_TEST } from './constants';
 
-const URL = 'https://sleepy-forest-71707.herokuapp.com/api/tests';
+//const URL = 'https://sleepy-forest-71707.herokuapp.com/api/tests';
+const URL = 'http://localhost:3000/api/tests'
 
 export function addTest(data) {
   const request = axios.post(URL, { test: data  } )
@@ -37,4 +38,14 @@ export function deleteTest(id) {
       dispatch({type: DELETE_TEST, payload: response.data})
     });
   };
+}
+
+export function updateTest(id, data) {
+  const request = axios.patch(`${URL}/${id}`, { test: data  } )
+  return (dispatch) => {
+    request.then((response) => {
+      dispatch({type: UPDATE_TEST, payload: response.data })
+    });
+  };
+
 }

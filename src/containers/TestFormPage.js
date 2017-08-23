@@ -19,21 +19,17 @@ class TestFormPage extends Component {
   }
 
 
-  submit = (values) => {
-    this.props.addTest(values)
-  }
+
 
   componentDidUpdate() {
     this.props.history.push(`/test/${this.props.test.id}/edit`)
-
   }
 
   render() {
-    console.log(this.props)
     return (
       <div className="test-form-page center">
         <div className="box">
-          <TestForm onSubmit={this.submit}/>
+          <TestForm/>
         </div>
       </div>
     )

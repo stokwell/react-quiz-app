@@ -28,7 +28,7 @@ class Test extends Component {
       const shuffledAnswerOptions = questions.map((question) => this.shuffleArray(question.answers));
       this.setState({
         questions: questions,
-        answerOptions: shuffledAnswerOptions[0] || null
+        answerOptions: shuffledAnswerOptions[0] || []
       })
     } else {
       this.setState({

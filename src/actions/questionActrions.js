@@ -1,9 +1,11 @@
 import axios from 'axios'
-import {reset} from 'redux-form';
+
+import { reset } from 'redux-form';
 
 import { ADD_QUESTION, DELETE_QUESTION } from './constants';
 
-const URL = 'https://sleepy-forest-71707.herokuapp.com/api/questions'
+//const URL = 'https://sleepy-forest-71707.herokuapp.com/api/questions'
+const URL = 'http://localhost:3000/api/questions'
 
 export function addQuestion(question, test_id){
   const request = axios.post(URL, { question: question, test_id: test_id } )

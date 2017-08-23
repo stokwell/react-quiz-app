@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import TestForm from './TestForm';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 class TestInfo extends Component {
 
@@ -11,11 +13,15 @@ class TestInfo extends Component {
     this.setState({ editing: true })
   }
 
+  closeEditForm = () => {
+    this.setState({ editing: false})
+  }
+
   render() {
     if (this.state.editing) {
       return (
         <div className="box">
-          <TestForm />
+          <TestForm test={this.props.test} closeEditForm={this.closeEditForm}/>
         </div>
       )
     }
@@ -26,11 +32,14 @@ class TestInfo extends Component {
             <h3>{this.props.test.title}</h3>
             <p>{this.props.test.description}</p>
           </div>
-          <button onClick={this.handleEdit}className="btn btn-primary">Edit</button>
+          <div>
+            <Link to={`/test/${this.props.test.id}`} className="btn btn-warning">Open</Link>
+            <button onClick={this.handleEdit} className="btn btn-primary">Edit</button>
+          </div>
         </div>
       </div>
     );
   }
 }
 
-export default TestInfo;
+export default connect()(TestInfo);

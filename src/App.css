@@ -1,10 +1,11 @@
+.btn { margin: 5px; }
+
 .none {
   display: none;
 }
 
 .right {
   color:green;
-
 }
 
 .wrong {
@@ -21,6 +22,22 @@
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .2);
 }
 
+/* Styles for Home  Component */
+
+.tests-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.test-box {
+  background: white;
+  margin: 30px;
+  width:300px;
+}
+
+.test-box a {
+  color:black;
+}
 /* Styles for forms */
 
 .undertitle {
@@ -111,4 +128,9 @@ input[type="radio"] {
 .question {
   text-align:center;
   margin-top: 20px;
+}
+
+.result {
+  font-size: 30px;
+  font-weight: bold;
 }

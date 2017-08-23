@@ -13,18 +13,23 @@ class QuestionsList extends Component {
     this.props.deleteQuestion(questionId)
   }
 
+  editQuestion = () => {
+
+  }
   render() {
     if (this.props.test.questions) {
       return (
         <div>
           <div className="box">
-            <ul>
+            <ul className="questions-list">
             { this.props.test.questions.length > 0
-
               ? this.props.test.questions.map((question) =>
               <li key={question.id} className="list-item" onClick={this.showAnswers}>
                 <QuestionsListItem question={question} />
-                <button onClick={this.deleteQuestion} id={question.id}>Delete</button>
+                <div>
+                  <button onClick={this.deleteQuestion} className="btn btn-danger" id={question.id}>Delete</button>
+                  <button onClick={this.editQuestion} className="btn btn-primary" id={question.id}>Edit</button>
+                </div>
               </li>)
               : <li>No questions yet. Add some question below.</li>
             }

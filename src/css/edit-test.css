@@ -3,3 +3,8 @@
   align-items: center;
   justify-content: space-between;
 }
+
+.questions-list > .list-item {
+  display:flex;
+  justify-content: space-between;
+}
