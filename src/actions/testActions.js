@@ -41,7 +41,7 @@ export function deleteTest(id) {
 }
 
 export function updateTest(id, data) {
-  const request = axios.patch(`${URL}/${id}`, { test: data  } )
+  const request = axios.patch(`${URL}/${id}`, data )
   return (dispatch) => {
     request.then((response) => {
       dispatch({type: UPDATE_TEST, payload: response.data })

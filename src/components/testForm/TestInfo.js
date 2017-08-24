@@ -27,14 +27,16 @@ class TestInfo extends Component {
     }
     return (
       <div>
-        <div className="box test-info">
-          <div>
-            <h3>{this.props.test.title}</h3>
-            <p>{this.props.test.description}</p>
-          </div>
-          <div>
+        <div className="box is-column">
+          <div className="title-with-button">
+            <h3 className="undertitle">Test</h3>
             <Link to={`/test/${this.props.test.id}`} className="btn btn-warning">Open</Link>
             <button onClick={this.handleEdit} className="btn btn-primary">Edit</button>
+          </div>
+          <div>
+            <h4>{this.props.test.title}</h4>
+            <p>{this.props.test.category}</p>
+            <p>{this.props.test.description}</p>
           </div>
         </div>
       </div>

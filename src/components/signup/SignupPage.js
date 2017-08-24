@@ -20,8 +20,8 @@ class SignupPage extends Component {
   render() {
     const { userSignUpRequest, addFlashMessage } = this.props
     return (
-      <div className="signup">
-        <div>
+      <div className="form-wrapper">
+        <div className="form-box">
           <SignupForm userSignUpRequest={userSignUpRequest} addFlashMessage={addFlashMessage}/>
           <Link to="/login">Sign In</Link>
         </div>

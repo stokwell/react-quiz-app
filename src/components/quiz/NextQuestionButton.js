@@ -2,7 +2,7 @@ import React from 'react';
 
 const NextQuestionButton = ({setNextQuestion}) => {
   return (
-    <button className="next-question-button" onClick={setNextQuestion}>Next Question</button>
+    <button className="btn btn-warning" onClick={setNextQuestion}>Next Question</button>
   );
 }
 

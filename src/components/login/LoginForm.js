@@ -35,8 +35,8 @@ class LoginForm extends Component {
   }
   render() {
     return (
-      <form onSubmit={this.onSubmit}>
-        <h1>Login</h1>
+      <form onSubmit={this.onSubmit} className="form-box">
+        <h1 className="form-title">Login</h1>
 
         <div className="form-group">
           <label className="control-label">Email</label>
@@ -61,7 +61,7 @@ class LoginForm extends Component {
         </div>
 
         <div className="form-group">
-          <button className="btn btn-primary btn-lg">
+          <button className="btn btn-primary float-right">
             Login
           </button>
         </div>

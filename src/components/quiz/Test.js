@@ -62,9 +62,9 @@ class Test extends Component {
     this.setUserAnswer(event.currentTarget);
 
     if (this.state.questionId < this.state.questions.length) {
-      setTimeout(() => this.showNextQuestionButton(), 200);
+      this.showNextQuestionButton();
     } else {
-      setTimeout(() => this.showResultButton(), 200);
+      this.showResultButton();
     }
   }
 
@@ -117,11 +117,8 @@ class Test extends Component {
 
   setUserAnswer(answer){
     const findAnswer = this.state.answerOptions.find((item) => item.body === answer.id)
-
     const right = findAnswer.right
     const answerId = answer.id
-    console.log(findAnswer)
-
 
     if(right) {
       const updatedAnswersCount = this.state.answersCount + 1
@@ -150,6 +147,7 @@ class Test extends Component {
         setNextQuestion={this.setNextQuestion}
         end={this.state.end}
         setResults={this.setResults}
+        test={this.props.quiz}
       />
     );
   }
@@ -161,16 +159,17 @@ class Test extends Component {
   }
 
   render() {
-    console.log(this.state)
+    console.log(this.props)
+    const backgroundImage = `http://localhost:3000/${this.props.quiz.cover.url}`
     return (
-      <div className="box">
-        <h2>{this.props.quiz.title}</h2>
-
-        <div>
+      <div className="quiz-container" style={{backgroundImage: `url(${backgroundImage})`}}>
+        <div className="quiz-box">
           <div>
-          {this.state.result ? this.renderResult() : this.renderQuiz()}
-          </div>
+            <div>
+              {this.state.result ? this.renderResult() : this.renderQuiz()}
+            </div>
 
+          </div>
         </div>
       </div>
     );

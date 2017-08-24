@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import { Field, FieldArray, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 
-
-
-
 const renderField = ({ input, label, placeholder, type, meta: { touched, error } }) =>
   <div className="margin-bottom">
     <label>
@@ -23,6 +20,12 @@ const renderField = ({ input, label, placeholder, type, meta: { touched, error }
 
 const renderAnswers = ({fields }) =>
   <ul>
+  <div className="title-with-button">
+    <h3 className="undertitle">Add Answer Options</h3>
+    <button type="button" onClick={() => fields.push()} className="btn btn-warning">
+      Add answer
+    </button>
+  </div>
     {fields.map((answer, index) =>
     <li key={index} className="list-item relative">
       <button
@@ -55,39 +58,23 @@ const renderAnswers = ({fields }) =>
       />
     </li>
     )}
-    <li>
-      <div className="new-answer-panel">
-        <button type="button" onClick={() => fields.push()} className="btn btn-warning">
-          Add answer
-        </button>
-      </div>
-    </li>
   </ul>
 
-
-
-
 class QuestionForm extends Component {
-
   render() {
     return (
       <div className="box">
-        <h3 className="undertitle">Add new Question</h3>
+        <h3 className="undertitle">New Question</h3>
         <form onSubmit={ this.props.handleSubmit }>
           <div className="form-group">
-            <h4 className="margin-bottom">1. Create your Question first</h4>
-            <div className="list-item">
-              <label htmlFor="body">Write your Question here.</label>
-              <Field name="body" component="input" type="text" placeholder="Question"/>
-            </div>
+            <label htmlFor="body">Question</label>
+            <Field name="body" component="input" type="text" placeholder="What is your question?"/>
           </div>
           <div className="form-group">
-            <h4 className="margin-bottom">2. Add some Answer Options for this Question</h4>
             <FieldArray name="answers" component={renderAnswers} />
           </div>
           <div className="form-group float-right">
-            <p>Ready?</p>
-            <button type="submit" className="btn btn-primary">Continue</button>
+            <button type="submit" className="btn btn-primary">Save Question</button>
           </div>
         </form>
       </div>

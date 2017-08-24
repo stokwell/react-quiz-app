@@ -7,10 +7,8 @@ import AnswerOptions from './AnswerOptions';
 import NextQuestionButton from './NextQuestionButton';
 import ResultsButton from './ResultsButton'
 
-
-
-
 const Quiz = (props) => {
+  console.log(this.props)
   function renderAnswerOptions(key) {
     return (
       <AnswerOptions
@@ -29,20 +27,23 @@ const Quiz = (props) => {
 
   return (
     <div>
-      <div key={props.questionId}>
+      <div className="qiuz-header">
         <QuestionCount
           counter={props.questionId}
           total={props.questionTotal}
         />
+        <h2>{props.test.title}| {props.test.category}</h2>
+      </div>
+      <div key={props.questionId} className="question-with-answers-box">
         <Question content={props.question} />
         <ul className="answerOptions">
           { props.answerOptions.map(renderAnswerOptions) }
         </ul>
+        <div className="btn-wrapper">
+          { props.next && <NextQuestionButton setNextQuestion={props.setNextQuestion}/>}
+          { props.end && <ResultsButton setResults={props.setResults}/> }
+        </div>
       </div>
-      { props.next && <NextQuestionButton setNextQuestion={props.setNextQuestion}/>}
-      { props.end && <ResultsButton setResults={props.setResults}/> }
-
-
     </div>
   );
 }

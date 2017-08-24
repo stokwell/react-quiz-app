@@ -7,7 +7,7 @@ import { userAuthRequest } from '../../actions/loginActions'
 class LoginPage extends Component {
 	render() {
 		return (
-			<div className="login">
+			<div className="form-wrapper">
 				<LoginForm userAuthRequest={this.props.userAuthRequest}/>
 			</div>
 		);

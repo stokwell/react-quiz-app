@@ -11,24 +11,21 @@ class TestPage extends Component {
     this.state = {
       quiz: null,
       loaded: false
-
     }
   }
 
   componentWillMount() {
     this.props.fetchTest(this.props.match.params.id)
-
   }
 
   componentWillReceiveProps(nextProps){
     this.setState({quiz: nextProps.quiz, loaded: true })
   }
 
-
   render() {
     const loading = this.state.loaded
     return (
-      <div className="container center">
+      <div>
         { loading
           ? <Test quiz={ this.state.quiz }/>
           : <div> Loading </div>
@@ -44,6 +41,5 @@ function mapStateToProps(state){
     isLoaded: state.tests.isLoaded
   }
 }
-
 
 export default connect(mapStateToProps, {fetchTest})(TestPage)

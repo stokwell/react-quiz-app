@@ -12,6 +12,7 @@ class Home extends Component {
     const tests = this.props.tests.tests.map((test) =>
       <div key={test.id} className="test-box">
         <Link to={`/test/${test.id}`}>
+          <img src={`http://localhost:3000/${test.cover.url}`} alt="cover"/>
           <h2>{test.title}</h2>
         </Link>
       </div>

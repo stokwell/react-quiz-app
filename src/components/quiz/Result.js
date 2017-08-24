@@ -2,7 +2,7 @@ import React from 'react';
 
 const Result= (props) => {
   return (
-    <div>
+    <div className="box">
       <p className="result">{props.correctAnswers}/{props.questionTotal}</p>
     </div>
   );

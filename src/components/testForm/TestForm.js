@@ -10,7 +10,8 @@ class TestForm extends Component {
   submit = (values) => {
     if(this.props.initialValues){
       const id = this.props.initialValues.id
-      this.props.updateTest(id, values)
+      const test = { test: { title: values.title, category: values.category, description: values.description}}
+      this.props.updateTest(id, test)
       this.props.closeEditForm()
     } else {
       this.props.addTest(values)

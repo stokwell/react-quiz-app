@@ -21,6 +21,9 @@ class QuestionsList extends Component {
       return (
         <div>
           <div className="box">
+            <div className="title-with-button">
+              <h3 className="undertitle"> Questions List</h3>
+            </div>  
             <ul className="questions-list">
             { this.props.test.questions.length > 0
               ? this.props.test.questions.map((question) =>

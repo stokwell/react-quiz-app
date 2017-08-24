@@ -19,8 +19,6 @@ class TestFormPage extends Component {
   }
 
 
-
-
   componentDidUpdate() {
     this.props.history.push(`/test/${this.props.test.id}/edit`)
   }

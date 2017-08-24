@@ -1,6 +1,17 @@
-.signup {
+.form-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
+
+}
+
+.form-title {
+  margin-bottom: 20px;
+}
+
+.form-box {
+  background: white;
+  padding:30px;
+  min-width:400px;
 }
