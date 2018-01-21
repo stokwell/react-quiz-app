@@ -24,7 +24,7 @@ class App extends Component {
         <Navigation />
         <Route exact path="/" component={Home} />
         <Route exact path="/new-test" component={TestFormPage} />
-        <Route exact path="/test/:id/edit" component={EditTestFormPage} />
+        <Route exact path="/test/:id/edit" component={requireAuth(EditTestFormPage)} />
         <Route exact path="/test/:id" component={TestPage}/>
         <Route path="/login" component={LoginPage}></Route>
         <Route path="/signup" component={SignupPage} />

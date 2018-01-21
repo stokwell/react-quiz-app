@@ -2,7 +2,7 @@ import React from 'react';
 
 const ResultsButton = (props) => {
   return (
-    <button className="btn btn-warning" onClick={props.setResults}>Results!</button>
+    <button className="btn btn-warning" onClick={props.setResults}>Results</button>
   );
 }
 

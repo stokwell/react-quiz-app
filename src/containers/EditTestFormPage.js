@@ -15,7 +15,7 @@ import { updateTest } from '../actions/testActions';
 
 class EditTestFormPage extends Component {
 
-  componentDidMount() {
+  componentWillMount() {
     if (this.props.match.params.id) {
       this.props.fetchTest(this.props.match.params.id)
     }
@@ -32,11 +32,6 @@ class EditTestFormPage extends Component {
     this.props.deleteQuestion()
   }
 
-  updateTest = (id, data) => {
-    this.props.updateTest(id, data)
-  }
-
-
 
   render() {
     const test  = this.props.test
@@ -46,7 +41,7 @@ class EditTestFormPage extends Component {
       <div className="center">
         <div className="column colunm-left ">
           <TestInfo test={test}/>
-          <CoverUploader test={test} updateTest={this.updateTest} />
+          <CoverUploader test={test}/>
         </div>
         <div className="column">
           <QuestionsList test={test} deleteQuestion={this.deleteQuestion}/>

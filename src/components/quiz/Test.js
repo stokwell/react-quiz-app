@@ -18,7 +18,8 @@ class Test extends Component {
       next: false,
       showAnswer: false,
       questions:[],
-      end: false
+      end: false,
+      selectedAnswers: []
     };
   }
 
@@ -59,13 +60,27 @@ class Test extends Component {
   };
 
   handleAnswerSelected = (event) => {
-    this.setUserAnswer(event.currentTarget);
+    console.log(event.currentTarget)
+    this.state.selectedAnswers.push(event.currentTarget)
 
-    if (this.state.questionId < this.state.questions.length) {
-      this.showNextQuestionButton();
-    } else {
-      this.showResultButton();
-    }
+    //this.setUserAnswer(event.currentTarget);
+
+    //if (this.state.questionId < this.state.questions.length) {
+      //this.showNextQuestionButton();
+    //} else {
+      //this.showResultButton();
+    //}
+  }
+
+  handleSaveAnswers = () => {
+    this.state.selectedAnswers.map((ans) => {
+      this.setUserAnswer(ans)
+      if (this.state.questionId < this.state.questions.length) {
+        this.showNextQuestionButton();
+      } else {
+        this.showResultButton();
+      }
+    })
   }
 
   showNextQuestionButton () {
@@ -85,22 +100,8 @@ class Test extends Component {
       answerOptions: this.state.questions[counter].answers,
       answer: '',
       next: false,
-      showAnswer: false
-    })
-  }
-
-  setNextQuestion = () => {
-    const counter = this.state.counter + 1;
-    const questionId = this.state.questionId + 1;
-
-    this.setState({
-      counter: counter,
-      questionId: questionId,
-      question: this.state.questions[counter].body,
-      answerOptions: this.state.questions[counter].answers,
-      answer: '',
-      next: false,
-      showAnswer: false
+      showAnswer: false,
+      selectedAnswers: []
     })
   }
 
@@ -148,6 +149,8 @@ class Test extends Component {
         end={this.state.end}
         setResults={this.setResults}
         test={this.props.quiz}
+        handleSaveAnswers={this.handleSaveAnswers}
+        selectedAnswers={this.state.selectedAnswers}
       />
     );
   }
@@ -160,9 +163,10 @@ class Test extends Component {
 
   render() {
     console.log(this.props)
-    const backgroundImage = `http://localhost:3000/${this.props.quiz.cover.url}`
+    //const backgroundImage = `http://localhost:3000/${this.props.quiz.cover.url}`
     return (
-      <div className="quiz-container" style={{backgroundImage: `url(${backgroundImage})`}}>
+      //<div className="quiz-container" style={{backgroundImage: `url(${backgroundImage})`}}>
+      <div className="quiz-container">
         <div className="quiz-box">
           <div>
             <div>

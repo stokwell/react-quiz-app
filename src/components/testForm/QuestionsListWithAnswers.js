@@ -5,7 +5,7 @@ class QuestionsListWithAnswers extends Component {
     return (
       <div onClick={this.props.goBack}>
         <h3>{this.props.question.body} </h3>
-        <ul>
+        <ul className="answers-list">
           { this.props.question.answers.map((answer) =>
               <li key={answer.id}>
                 {answer.body}

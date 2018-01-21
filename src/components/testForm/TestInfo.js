@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 class TestInfo extends Component {
-
   state = {
     editing: false
   }

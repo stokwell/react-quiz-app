@@ -4,7 +4,8 @@ import jwt from 'jsonwebtoken'
 
 import { SET_CURRENT_USER } from './constants'
 
-const URL = 'http://localhost:3000/api/authenticate';
+const URL = 'http://localhost:3000/api/auth';
+//const URL = 'https://sleepy-forest-71707.herokuapp.com/api/auth'
 
 export function setCurrentUser(user) {
   return {

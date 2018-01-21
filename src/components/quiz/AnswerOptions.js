@@ -3,48 +3,50 @@ import classNames  from 'classnames';
 
 
 const AnswerOptions = (props) => {
+  console.log(props.selectedAnswers)
   const showAnswer = props.showAnswer
   const showTrueAnswer = props.truth === true
 
+  const showWrongAnswer = props.selectedAnswers.map((x) => {
+    return x.id
+  })
+
   var classes = classNames({
     'radioCustomLabel': true,
+    'form-check-label': true,
     'right':  showTrueAnswer,
-    'wrong': props.answerContent === props.answer && !showTrueAnswer
+    'wrong': showWrongAnswer.includes(props.answerContent) && !showTrueAnswer
   } );
-
 
   if(!showAnswer) {
     return (
-      <li className="answerOption">
+      <li className="answerOption form-check">
         <input
-          type="radio"
+          type="checkbox"
           className="radioCustomButton"
           name="radioGroup"
-          checked={props.answerContent === props.answer}
           id={props.answerContent}
           value={props.answerType}
-          disabled={props.answer}
           onChange={props.onAnswerSelected}
+          checked={props.answerType}
         />
-        <label className="radioCustomLabel" htmlFor={props.answerType}>
+        <label className="radioCustomLabel" for={props.answerContent}>
           {props.answerContent}
         </label>
       </li>
     );
   }
     return (
-      <li className="answerOption">
+      <li className="answerOption form-check">
         <input
-          type="radio"
-          className={ showTrueAnswer ? 'radioCustomButton' + 'white' : 'radioCustomButton'}
+          type="checkbox"
+          className={ showTrueAnswer ? 'form-check-input radioCustomButton' + 'white' : 'form-check-input radioCustomButton'}
           name="radioGroup"
-          checked={props.answerContent === props.answer}
           id={props.answerContent}
           value={props.answerType}
-          disabled={props.answer}
           onChange={props.onAnswerSelected}
         />
-        <label className={ classes} htmlFor={props.answerType}>
+        <label className={ classes } htmlFor={props.answerContent}>
           {props.answerContent}
         </label>
         { props.answerContent === props.answer && <p>{props.comment}</p> }

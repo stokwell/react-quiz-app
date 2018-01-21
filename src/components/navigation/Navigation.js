@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { logout } from '../../actions/authActions';
-import './navigation.css';
+import '../../css/navigation.css';
 
 class Navigation extends Component  {
 
@@ -21,23 +21,22 @@ class Navigation extends Component  {
   render() {
     const { isAuthenticated } = this.props.auth;
 
-
     const userLinks = (
       <div>
-        <Link to="/dashboard">Dashboard</Link>
-        <a href="#" onClick={this.logout}>Logout</a>
+        <Link to="/dashboard" className="auth-link">Dashboard</Link>
+        <a href="#" onClick={this.logout} className="auth-link">Logout</a>
       </div>
     )
 
     const guestLinks = (
       <div>
-        <Link to="/login">Sign In</Link>
-        <Link to="/signup">Sign Up</Link>
+        <Link to="/login" className="auth-link">Sign In</Link>
+        <Link to="/signup" className="auth-link">Sign Up</Link>
       </div>
     )
     return (
       <header>
-        <Link to="/">Tests</Link>
+        <h2><Link to="/">Quiz It</Link></h2>
         { isAuthenticated ? userLinks : guestLinks }
       </header>
     )

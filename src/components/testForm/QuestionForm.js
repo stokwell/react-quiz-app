@@ -64,11 +64,15 @@ class QuestionForm extends Component {
   render() {
     return (
       <div className="box">
-        <h3 className="undertitle">New Question</h3>
+        <h3>New Question</h3>
         <form onSubmit={ this.props.handleSubmit }>
           <div className="form-group">
             <label htmlFor="body">Question</label>
             <Field name="body" component="input" type="text" placeholder="What is your question?"/>
+          </div>
+          <div className="form-group">
+            <label htmlFor="comment">Comment</label>
+            <Field name="comment" component="input" type="text" placeholder="Enter a comment for this question?"/>
           </div>
           <div className="form-group">
             <FieldArray name="answers" component={renderAnswers} />

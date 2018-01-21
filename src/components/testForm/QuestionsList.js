@@ -7,15 +7,14 @@ import QuestionsListItem from './QuestionListItem';
 
 class QuestionsList extends Component {
 
-
   deleteQuestion = (e) => {
     const questionId = e.target.id
     this.props.deleteQuestion(questionId)
   }
 
   editQuestion = () => {
-
   }
+
   render() {
     if (this.props.test.questions) {
       return (
@@ -23,7 +22,7 @@ class QuestionsList extends Component {
           <div className="box">
             <div className="title-with-button">
               <h3 className="undertitle"> Questions List</h3>
-            </div>  
+            </div>
             <ul className="questions-list">
             { this.props.test.questions.length > 0
               ? this.props.test.questions.map((question) =>
@@ -40,10 +39,9 @@ class QuestionsList extends Component {
           </div>
         </div>
       )
-    }else return (
+    } else return (
       <div className="box">No content</div>
     )
-
   }
 }
 

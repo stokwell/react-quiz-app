@@ -2,7 +2,7 @@ import { SET_CURRENT_USER } from '../actions/constants';
 import isEmpty from 'lodash/isEmpty'
 
 const initialState = {
-  isAuthenticated: false,
+  isAuthenticated: !!localStorage.getItem('jwtToken'),
   user: {}
 }
 

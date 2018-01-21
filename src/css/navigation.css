@@ -1,0 +1,31 @@
+header {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 4rem;
+  padding:10px;
+  background-color: #553F7A;
+  overflow: hidden;
+}
+
+
+header a {
+  padding: 10px;
+  margin-right:20px;
+  height: 100%;
+  text-decoration: none;
+}
+
+header a:hover {
+  color: #fff;
+}
+
+.auth-link {
+  font-weight: 500;
+  color: #cbbde2;
+  text-decoration: none;
+  display: inline-block;
+  padding: 12px;
+  font: 16px/1 'Open Sans', sans-serif;
+}

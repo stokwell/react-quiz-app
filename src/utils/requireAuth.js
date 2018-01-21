@@ -32,8 +32,6 @@ export default function(ComposedComponent) {
     }
   }
 
-  //have to add PropTypes
-
   function mapStateToProps(state){
     return {
       isAuthenticated: state.authReducer.isAuthenticated
@@ -43,4 +41,3 @@ export default function(ComposedComponent) {
   return connect(mapStateToProps, { addFlashMessage })(Authenticate)
 
 }
-

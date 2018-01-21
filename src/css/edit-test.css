@@ -8,3 +8,11 @@
   display:flex;
   justify-content: space-between;
 }
+.answers-list ul {
+  text-decoration: line-through;
+}
+
+.answers-list li {
+  margin: 20px 0;
+
+}

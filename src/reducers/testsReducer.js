@@ -7,8 +7,6 @@ const initialState = {
   isUpdated: false
 }
 
-
-
 export default function eventsReducer (state = initialState, action) {
   switch(action.type) {
     default:

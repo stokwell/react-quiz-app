@@ -6,10 +6,11 @@ import QuestionCount from './QuestionCount';
 import AnswerOptions from './AnswerOptions';
 import NextQuestionButton from './NextQuestionButton';
 import ResultsButton from './ResultsButton'
+import SaveButton from './SaveButton'
 
 const Quiz = (props) => {
-  console.log(this.props)
   function renderAnswerOptions(key) {
+    console.log(props)
     return (
       <AnswerOptions
         key={key.id}
@@ -21,26 +22,29 @@ const Quiz = (props) => {
         questionId={props.questionId}
         onAnswerSelected={props.onAnswerSelected}
         showAnswer={props.showAnswer}
+        selectedAnswers={props.selectedAnswers}
       />
     );
   }
-
   return (
     <div>
       <div className="qiuz-header">
-        <QuestionCount
-          counter={props.questionId}
-          total={props.questionTotal}
-        />
-        <h2>{props.test.title}| {props.test.category}</h2>
+        <h2 className="">{props.test.title}</h2>
+        <div>
+          <QuestionCount
+            counter={props.questionId}
+            total={props.questionTotal}
+          />
+         </div>
       </div>
+
       <div key={props.questionId} className="question-with-answers-box">
         <Question content={props.question} />
         <ul className="answerOptions">
           { props.answerOptions.map(renderAnswerOptions) }
         </ul>
         <div className="btn-wrapper">
-          { props.next && <NextQuestionButton setNextQuestion={props.setNextQuestion}/>}
+          { props.next ? <NextQuestionButton setNextQuestion={props.setNextQuestion}/> : <SaveButton handleSaveAnswers={props.handleSaveAnswers} />}
           { props.end && <ResultsButton setResults={props.setResults}/> }
         </div>
       </div>

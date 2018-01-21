@@ -19,7 +19,6 @@ class TestForm extends Component {
   }
 
   render() {
-    console.log(this.props.initialValues)
     return (
       <div className="test-form-wrapper">
         <form onSubmit={ this.props.handleSubmit(this.submit) }>
